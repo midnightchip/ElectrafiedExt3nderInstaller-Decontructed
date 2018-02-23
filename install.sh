@@ -8,7 +8,14 @@ cp -r /Ext3nder-electrified/Library/Switches/Ext3nderSwitch.bundle /Library/Swit
 echo "Copied Switches"
 rm -rf /Ext3nder-electrified/Extender.app/PlugIns
 cp -r /Ext3nder-electrified/var/Ext3nder-Installer/* /Ext3nder-electrified/Extender.app/
-sed -i 
+sed -i 's#/System/Library/Frameworks/Security\\.framework/Security#@executable_path/////////////////////////////Sys\\.dylib#g' /Ext3nder-electrified/Extender.app/Extender
+sed -i 's#/usr/lib/libSystem\\.B\\.dylib#@executable_path/Sys\\.dylib#g' /Ext3nder-electrified/Extender.app/Extender
+sed -i 's#ldid/ldid\\.cpp(498): _assert(stream\\.sputn(static_cast<const char \\*>(data) + to#=======\\*=======\\*=======CSSTASHEDAPPEXECUTABLESIGNATURE=======\\*=======\\*=======#g' /Ext3nder-electrified/Extender.app/Extender
+echo "** Copying Cydia Extender To /Applications"
+rm -rf /Applications/Ext3nder.app
+chown -R 0:0 /Ext3nder-electrified/Extender.app
+chmod -R 755 /Ext3nder-electrified/Extender.app
+cp -f /Ext3nder-electrified/Extender.app /Applications/Ext3nder.app
 jtool --sign --ent p.ent --inplace /Applications/Extender.app/Extender
 jtool --sign --ent p.ent --inplace /Applications/Extender.app/deceit.dylib
 jtool --sign --ent p.ent --inplace /Applications/Extender.app/Extender.dylib
