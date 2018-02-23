@@ -1,7 +1,7 @@
 echo "This install script is ONLY for Electra betas, I built this version of Ext3nder from Ext3nder-Installer, run on RC1.3, as postinst don't run correctly rn on Electra Betas, I am recompiling that so that you will have an updatable veriosn of Ext3nder"
 ln -s /Ext3nder-electrified/Library/MobileSubstrate/DynamicLibraries/Ext3nder_SpringBoard.dylib /Ext3nder-electrified/Library/Switches/Ext3nderSwitch.bundle
 chmod +x /Ext3nder-electrified/Library/MobileSubstrate/DynamicLibraries/*
-cp /Ext3nder-electrified/Library/MobileSubstrate/DynamicLibraries/* /Library/SBInject/
+cp /Ext3nder-electrified/Library/MobileSubstrate/DynamicLibraries/* /bootstrap/Library/SBInject/
 echo "Copying Files to SBinject"
 mkdir /Library/Switches/
 cp -r /Ext3nder-electrified/Library/Switches/Ext3nderSwitch.bundle /Library/Switches/
@@ -15,7 +15,7 @@ echo "** Copying Cydia Extender To /Applications"
 rm -rf /Applications/Ext3nder.app
 chown -R 0:0 /Ext3nder-electrified/Extender.app
 chmod -R 755 /Ext3nder-electrified/Extender.app
-cp -f /Ext3nder-electrified/Extender.app /Applications/Ext3nder.app
+cp -r -f /Ext3nder-electrified/Extender.app /Applications/Extender.app
 jtool --sign --ent p.ent --inplace /Applications/Extender.app/Extender
 jtool --sign --ent p.ent --inplace /Applications/Extender.app/deceit.dylib
 jtool --sign --ent p.ent --inplace /Applications/Extender.app/Extender.dylib
